@@ -14,7 +14,7 @@ export default (content, refs) => {
 
   if (ref) ref.remove()
 
-  ref = createElement('link', refs.document, { rel: 'stylesheet' })
+  ref = createElement('link', refs.document, { rel: 'stylesheet', id })
 
   if (ref && ref.href) {
     revokeObjectURL(ref.href, refs.document)
