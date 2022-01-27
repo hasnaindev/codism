@@ -8,7 +8,11 @@
     "url": "https://github.com/npm/cli.git"
   },
   "contributors": [],
-  "keywords": ["codepen", "tailwindcss", "coding platform"],
+  "keywords": [
+    "codepen",
+    "tailwindcss",
+    "coding platform"
+  ],
   "license": "ISC",
   "scripts": {
     "start": "npm run watch",
@@ -43,6 +47,7 @@
   "dependencies": {
     "codemirror": "^5.65.1",
     "dom-event": "^1.0.0",
+    "local-storage": "^2.0.0",
     "select-dom": "^7.1.1"
   }
 }
