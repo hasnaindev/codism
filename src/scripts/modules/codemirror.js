@@ -22,7 +22,7 @@ const config = [
     key: 'css',
     el: select('#css-editor'),
     options: {
-      mode: 'css'
+      mode: 'css',
     }
   },
   {
