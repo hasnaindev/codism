@@ -9,17 +9,9 @@ const refs = {
   document: null
 }
 
-const updateJs = content => {
-  runJs(content, refs)
-}
-
-const updateCss = content => {
-  runCss(content, refs)
-}
-
-const updateHtml = content => {
-  refs.document.body.innerHTML = content
-}
+const updateJs = content => runJs(content, refs)
+const updateCss = content => runCss(content, refs)
+const updateHtml = content => (refs.document.body.innerHTML = content)
 
 export default () => {
   const el = select('#preview')
@@ -27,17 +19,15 @@ export default () => {
   refs.window = el.contentWindow
   refs.document = el.contentDocument
 
-  const onStateChange = (key, value, { js }) => {
+  const onStateChange = (key, value, { html, js }) => {
     switch (key) {
       case 'js':
-        updateJs(value)
+      case 'html':
+        updateHtml(html)
+        updateJs(js)
       break
       case 'css':
         updateCss(value)
-      break
-      case 'html':
-        updateHtml(value)
-        updateJs(js)
       break
     }
   }
