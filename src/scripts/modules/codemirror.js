@@ -7,9 +7,8 @@ import 'codemirror/mode/javascript/javascript'
 import select from 'select-dom'
 import CodeMirror from 'codemirror'
 
-import { set } from '../lib/store'
+import { get, set } from '../classes/Store'
 import createDebouncer from '../lib/debouncer'
-import { get } from '../lib/store'
 
 const config = [
   {
