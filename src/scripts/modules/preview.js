@@ -41,5 +41,13 @@ export default () => {
     }
   }
 
+  updateHtml(defaultHtml)
   subscribe(onStateChange)
 }
+
+const defaultHtml = `
+<div style="text-align: center; padding-top: 30px; font-family: sans-serif">
+  <h1 style="margin-bottom: 12px">Preview</h1>
+  <p>Starting writing HTML, CSS and JavaScript!</p>
+</div>
+`
