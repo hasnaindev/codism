@@ -9,8 +9,8 @@ export const revokeObjectURL = (blob, context = window) => context.URL.revokeObj
 export const appendElement = (element, context = document.body) => context.append(element)
 export const removeElement = (element, context = document) => context.removeChild(element)
 
-export const createElement = (type, context = document, attributes) => {
-  const element = context.createElement(type)
+export const createElement = (type, attributes) => {
+  const element = document.createElement(type)
 
   if (attributes) {
     for (let attribute in attributes) {

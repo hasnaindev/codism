@@ -1,5 +1,6 @@
 import Resource from './Resource'
 import {
+  createElement,
   createStyleBlob,
   createObjectURL
 } from '../lib/utils'
@@ -17,14 +18,17 @@ class CompilableStyleResource extends Resource {
   build () {
     const {
       content,
-      context
+      context,
+      referenceId
     } = this
 
-    const stylesheet = document.createElement('link')
-    stylesheet.rel = 'stylesheet'
-    stylesheet.href = createObjectURL(createStyleBlob(content), context.window)
+    const options = {
+      id: referenceId,
+      rel: 'stylesheet',
+      href: createObjectURL(createStyleBlob(content), context.window)
+    }
 
-    return stylesheet
+    return createElement('link', options)
   }
 }
 

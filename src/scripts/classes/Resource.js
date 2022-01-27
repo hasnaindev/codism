@@ -8,11 +8,9 @@ class Resource {
       context = {}
     } = {}
   ) {
-    const id = v4().replace(/-/g, '_')
-
     this.uri = uri
     this.context = context
-    this.referenceId = `#x${id}`
+    this.referenceId = `x${v4()}`
   }
 
   setContext (context) {
@@ -29,7 +27,7 @@ class Resource {
       referenceId,
     } = this
 
-    const ref = select(referenceId, context.document)
+    const ref = select(`#${referenceId}`, context.document)
 
     if (ref) ref.remove()
 

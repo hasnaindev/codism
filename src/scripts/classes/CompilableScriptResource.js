@@ -1,5 +1,6 @@
 import Resource from './Resource'
 import {
+  createElement,
   createScriptBlob,
   createObjectURL
 } from '../lib/utils'
@@ -18,16 +19,18 @@ class CompilableScriptResource extends Resource {
   build () {
     const {
       content,
-      context
+      context,
+      referenceId
     } = this
 
-    const script = document.createElement('script')
+    const options = {
+      id: referenceId,
+      async: true,
+      defer: true,
+      src: createObjectURL(createScriptBlob(content), context.window)
+    }
 
-    script.async = true
-    script.defer = true
-    script.src = createObjectURL(createScriptBlob(content), context.window)
-
-    return script
+    return createElement('script', options)
   }
 
   _scopify () {
