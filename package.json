@@ -48,6 +48,7 @@
     "codemirror": "^5.65.1",
     "dom-event": "^1.0.0",
     "local-storage": "^2.0.0",
-    "select-dom": "^7.1.1"
+    "select-dom": "^7.1.1",
+    "uuid-browser": "^3.1.0"
   }
 }

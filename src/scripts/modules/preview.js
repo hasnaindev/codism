@@ -2,7 +2,7 @@ import select from 'select-dom'
 
 import runJs from '../lib/js'
 import runCss from '../lib/css'
-import { subscribe } from '../lib/store'
+import { subscribe } from '../classes/Store'
 
 const refs = {
   window: null,

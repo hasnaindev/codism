@@ -1,31 +1,9 @@
-import select from 'select-dom'
-import {
-  appendElement,
-  createElement,
-  createObjectURL,
-  createScriptBlob,
-  revokeObjectURL
-} from './utils'
+import CompilableScriptResource from '../classes/CompilableScriptResource'
 
-const id = 'js-ref'
+const resource = new CompilableScriptResource()
 
 export default (content, refs) => {
-  let ref = select(`#${id}`, refs.document)
-
-  if (ref) ref.remove()
-
-  ref = createElement('script', refs.document, { id, async: true, defer: true })
-
-  if (ref && ref.src) {
-    revokeObjectURL(ref.src, refs.window)
-  }
-
-  ref.src = createObjectURL(createScriptBlob(scopify(content)), refs.window)
-  appendElement(ref, refs.document.head)
+  resource.setContent(content)
+  resource.setContext(refs)
+  resource.execute()
 }
-
-const scopify = content => `
-(function() {
-${content}
-})();
-`.trim()

@@ -1,25 +1,9 @@
-import select from 'select-dom'
-import {
-  appendElement,
-  createElement,
-  createObjectURL,
-  createStyleBlob,
-  revokeObjectURL
-} from './utils'
+import CompilableStyleResource from '../classes/CompilableStyleResource'
 
-const id = 'css-ref'
+const resource = new CompilableStyleResource()
 
-export default (content, refs) => {
-  let ref = select(`#${id}`, refs.document)
-
-  if (ref) ref.remove()
-
-  ref = createElement('link', refs.document, { rel: 'stylesheet', id })
-
-  if (ref && ref.href) {
-    revokeObjectURL(ref.href, refs.document)
-  }
-
-  ref.href = createObjectURL(createStyleBlob(content), refs.window)
-  appendElement(ref, refs.document.head)
+export default (content, context) => {
+  resource.setContent(content)
+  resource.setContext(context)
+  resource.execute()
 }

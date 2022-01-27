@@ -1,5 +1,3 @@
-import { get } from './store'
-
 const createBlob = (content, type) => new Blob([content], { type })
 
 export const createStyleBlob = (content) => createBlob(content, 'text/css')
