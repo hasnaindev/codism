@@ -27,7 +27,7 @@ export default () => {
   refs.window = el.contentWindow
   refs.document = el.contentDocument
 
-  const onStateChange = (key, value) => {
+  const onStateChange = (key, value, { js }) => {
     switch (key) {
       case 'js':
         updateJs(value)
@@ -37,6 +37,7 @@ export default () => {
       break
       case 'html':
         updateHtml(value)
+        updateJs(js)
       break
     }
   }
