@@ -2,7 +2,7 @@ import select from 'select-dom'
 
 import runJs from '../lib/js'
 import runCss from '../lib/css'
-import { listen } from '../lib/store'
+import { subscribe } from '../lib/store'
 
 const refs = {
   window: null,
@@ -27,14 +27,19 @@ export default () => {
   refs.window = el.contentWindow
   refs.document = el.contentDocument
 
-  listen((key, value) => {
+  const onStateChange = (key, value) => {
     switch (key) {
-      case 'js': updateJs(value)
+      case 'js':
+        updateJs(value)
       break
-      case 'css': updateCss(value)
+      case 'css':
+        updateCss(value)
       break
-      case 'html': updateHtml(value)
+      case 'html':
+        updateHtml(value)
       break
     }
-  })
+  }
+
+  subscribe(onStateChange)
 }
