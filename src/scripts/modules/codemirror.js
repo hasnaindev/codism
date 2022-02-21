@@ -1,4 +1,10 @@
 import 'codemirror/lib/codemirror.css'
+import 'codemirror/addon/hint/show-hint.css'
+
+import 'codemirror/addon/hint/show-hint'
+import 'codemirror/addon/hint/css-hint'
+import 'codemirror/addon/hint/html-hint'
+import 'codemirror/addon/hint/javascript-hint'
 
 import 'codemirror/mode/css/css'
 import 'codemirror/mode/htmlmixed/htmlmixed'
@@ -15,33 +21,36 @@ const config = [
     key: 'html',
     el: select('#html-editor'),
     options: {
-      mode: 'htmlmixed'
+      mode: 'text/html'
     },
   },
   {
     key: 'css',
     el: select('#css-editor'),
     options: {
-      mode: 'css',
+      mode: 'text/css',
     }
   },
   {
     key: 'js',
     el: select('#js-editor'),
     options: {
-      mode: 'javascript'
+      mode: 'application/javascript'
     }
   }
 ]
 
 export default () => {
   for (const { el, key, options } of config) {
-    const codemirror = new CodeMirror(el, {
+    const codemirror = CodeMirror(el, {
       tabSize: 2,
       lineNumbers: true,
       lineWrapping: true,
-      theme: 'material-palenight',
       value: get()[key],
+      theme: 'material-palenight',
+      extraKeys: {
+        'Ctrl-Space': 'autocomplete'
+      },
       ...options
     })
 

@@ -5,3 +5,5 @@
 @layer components {}
 
 @import './vendors/codemirror-material-palenight.css';
+
+@import './base/reset.css';
