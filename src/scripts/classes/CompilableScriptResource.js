@@ -6,16 +6,6 @@ import {
 } from '../lib/utils'
 
 class CompilableScriptResource extends Resource {
-  constructor ({ content = '' } = {}) {
-    super()
-    this.content = content
-  }
-
-  setContent (content) {
-    this.content = content
-    this._scopify()
-  }
-
   build () {
     const {
       content,
@@ -27,14 +17,14 @@ class CompilableScriptResource extends Resource {
       id: referenceId,
       async: true,
       defer: true,
-      src: createObjectURL(createScriptBlob(content), context.window)
+      src: createObjectURL(createScriptBlob(this._scopify(content)), context.window)
     }
 
     return createElement('script', options)
   }
 
-  _scopify () {
-    this.content = `(function() {\n${this.content}\n})();`
+  _scopify (content) {
+    return `(function() {\n${content}\n})();`
   }
 }
 

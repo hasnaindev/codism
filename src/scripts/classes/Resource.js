@@ -5,12 +5,18 @@ class Resource {
   constructor (
     {
       uri = '',
+      content = '',
       context = {}
     } = {}
   ) {
     this.uri = uri
+    this.content = content
     this.context = context
     this.referenceId = `x${v4()}`
+  }
+
+  setContent (content) {
+    this.content = content
   }
 
   setContext (context) {

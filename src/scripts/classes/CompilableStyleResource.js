@@ -6,15 +6,6 @@ import {
 } from '../lib/utils'
 
 class CompilableStyleResource extends Resource {
-  constructor ({ content = '' } = {}) {
-    super()
-    this.content = content
-  }
-
-  setContent (content) {
-    this.content = content
-  }
-
   build () {
     const {
       content,
