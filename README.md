@@ -1,6 +1,6 @@
 # Codism
 
-[Codism](https://codism.netlify.com) is a [Codepen](https://codepen.com/) inspired coding playgound that lets you add and modify HTML, CSS and JavaScript to create in order to create cool stuff! You'll definitely find it handy if you just want to code something without needing to go create files and folders that end up being a mess.
+[Codism](https://codism.netlify.app) is a [Codepen](https://codepen.com/) inspired coding playgound that lets you add and modify HTML, CSS and JavaScript to create in order to create cool stuff! You'll definitely find it handy if you just want to code something without needing to go create files and folders that end up being a mess.
 
 ## Fast & Robust
 
